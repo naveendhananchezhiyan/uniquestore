@@ -1,0 +1,15 @@
+
+{
+  "products": [
+    {
+      "id": "shirt-001",
+      "name": "Classic Casual Shirt",
+      "category": "Fashion",
+      "affiliateUrl": "https://amzn.to/4inQGDn",
+      "imageUrl": "",
+      "price": null,
+      "currency": "INR",
+      "status": "active"
+    }
+  ]
+}
