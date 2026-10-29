@@ -327,6 +327,49 @@ const products = [
     affiliateUrl: ""
   }
 ];
+  // Load additional products from products.json
+async function loadExternalProducts() {
+  try {
+    const response = await fetch("./products.json");
+
+    if (!response.ok) {
+      throw new Error("Could not load products.json");
+    }
+
+    const data = await response.json();
+
+    const externalProducts = (data.products || [])
+      .filter(p => p.status === "active")
+      .map((p, index) => ({
+        id: 1000 + index,
+        name: p.name,
+        category: p.category,
+        description: p.description || "Explore this product.",
+        price: p.price ?? null,
+        image: p.imageUrl || "",
+        affiliateUrl: p.affiliateUrl || ""
+      }));
+
+    // Replace matching demo products to avoid duplicates.
+    externalProducts.forEach(product => {
+      const existingIndex = products.findIndex(
+        item => item.name.toLowerCase() === product.name.toLowerCase()
+      );
+
+      if (existingIndex !== -1) {
+        products[existingIndex] = product;
+      } else {
+        products.push(product);
+      }
+    });
+
+    renderProducts();
+    renderCart();
+
+  } catch (error) {
+    console.error("Product loading error:", error);
+  }
+}
 
 let category = "All";
 let cart = [];
