@@ -4,7 +4,8 @@
     {
       "id": "shirt-001",
       "name": "Classic Casual Shirt",
-      "category": "Fashion",
+      "category": "Shirts",
+      "description": "Explore this casual shirt on Amazon.",
       "affiliateUrl": "https://amzn.to/4inQGDn",
       "imageUrl": "",
       "price": null,
